@@ -1,0 +1,8 @@
+﻿- hosts: webservers
+  tasks:
+    - name: Installing Apache2 package
+      apt: name=apache2 update_cache=yes state=installed
+    - name: Enable Mod Service
+      apache2_module: name=rewrite state=present
+    - name: Start Service
+      service: name=apache2 state=restarted
